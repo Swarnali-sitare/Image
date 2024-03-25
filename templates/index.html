@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.pixelstalk.net/wp-content/uploads/images1/Nikon-DSLR-Camera-backgrounds.jpg'); /* Specify the path to your background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif; /* Use Playfair Display font for the welcome message */
+            color: #09dbee;
+            font-size: 48px; /* Adjust font size as needed */
+            margin-bottom: 20px; /* Add some space below the welcome message */
+        }
+        .container {
+            width: 600px; /* Further increased max-width */
+            padding: 30px 30px; /* Increased padding (vertical padding is increased more than horizontal) */
+            background-color: rgba(255, 255, 255, 0.40); /* More transparent background */
+            border-radius: 20px; /* Increased border radius for a smoother look */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Increased box shadow for depth */
+            font-family: 'Arial', sans-serif;
+            height: auto; /* Adjusted height to auto */
+        }
+        h2,h3 {
+            color: #0a3abe;
+            font-size: 30px; /* Adjust font size as needed */
+            margin-bottom: 10px; /* Add some space below the headers */
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 20px; /* Adjust font size as needed */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:active {
+            background-color: #00428a;
+        }
+        span.text-after {
+            margin-left: 10px; /* Adjust spacing between button and text */
+            font-size: 20px; /* Adjust font size for the text after buttons */
+            color: #311313; /* Adjust text color */
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello <span id="username"> {{ username }}</span>, Welcome to my Webpage!</h1>
+    <div class="container">
+        <h2>Upload Your Image</h2>
+        <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+        
+            <h3>Choose Your Filters:</h3>
+            <button type="button" name="filter" value="crop" onclick="getFilterValue('crop')">CROP</button><span class="text-after">Adjust the size of your image (Square Crop)</span><br>
+            <button type="button" name="filter" value="blur" onclick="getFilterValue('blur')">BLUR</button><span class="text-after">Blur your image (Radial blur)</span><br>
+            <button type="button" name="filter" value="rotate" onclick="getFilterValue('rotate')">ROTATE</button><span class="text-after">Rotate your image (0-360 degress)</span><br>
+            <button type="button" name="filter" value="sharpness" onclick="getFilterValue('sharpness')">SHARPNESS</button><span class="text-after">Adjust the Sharpness of your image</span><br>
+            <button type="button" name="filter" value="brightness" onclick="getFilterValue('brightness')">BRIGHTNESS</button><span class="text-after">Adjust the Brightness of your image</span><br>
+            <button type="button" name="filter" value="contrast" onclick="getFilterValue('contrast')">CONTRAST</button><span class="text-after">Adjust the Contrast of your image</span>
+            <br>
+            <div id="filter-value-input"></div>
+            <br>
+            <button type="submit">Apply Your Filters</button>
+        </form>
+    </div>
+
+    <script>
+        function getFilterValue(filterName) {
+            var inputValue = prompt("Enter value for " + filterName + " filter (0-100):");
+            if (inputValue !== null && inputValue !== "") {
+                var inputField = document.createElement("input");
+                inputField.setAttribute("type", "hidden");
+                inputField.setAttribute("name", filterName);
+                inputField.setAttribute("value", inputValue);
+                document.getElementById("filter-value-input").appendChild(inputField);
+            }
+        }
+    </script>
+</body>
+</html>

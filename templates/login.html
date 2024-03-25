@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Playfair+Display&display=swap">
+<style>
+  body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://photographyconcentrate.com/wp-content/uploads/best-camera-for-low-light.jpg'); /* Add your image URL here */
+    background-size: cover;
+    background-position: center;
+  }
+  .login-container {
+    position: relative;
+    width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 30px;
+    color: #007bff;
+  }
+  .login-container input[type="email"],
+  .login-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .login-container input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    font-size: 18px;
+  }
+  .login-container input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px;
+    height: 150px;
+  }
+</style>
+</head>
+<body>
+<img src="https://cdn.freelogodesign.org/files/e111d3a5a84848cab409356ddf497380/thumb/logo_200x200.png?v=0" alt="Logo" class="logo"> <!-- Add your logo path here -->
+<div class="login-container">
+  <h2>Enter Your Details</h2>
+  <form id="login-form" action="/" method="POST">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="submit" value="Get Started ▶">
+  </form>
+</div>
+</body>
+</html>
